@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WebServiceTutorial.MainPage">
+    <StackLayout Margin="20,35,20,20">
+        <Button Text="Get Repository Data"
+                Clicked="OnButtonClicked" />
+
+        <!--<ListView x:Name="MyListView">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding HowTo}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>-->
+
+        <ListView x:Name="MyListView"
+                  ItemSelected="OnListViewItemSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Id}" Detail="{Binding HowTo}">
+                        <TextCell.ContextActions>
+                            <MenuItem                     
+                    Text="Delete" IsDestructive="True" />
+                        </TextCell.ContextActions>
+                    </TextCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+
+        <!--<ListView x:Name="MyListView">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Height="110" Margin="6">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="1" VerticalAlignment="Top" Margin="10,0,0,0">
+                            <TextBlock Text="{Binding Id}" Style="{StaticResource TitleTextStyle}" TextWrapping="NoWrap"/>
+                            <TextBlock Text="{Binding HowTo}" Style="{StaticResource CaptionTextStyle}" TextWrapping="NoWrap"/>
+                            <TextBlock Text="{Binding Platform}" Style="{StaticResource BodyTextStyle}" MaxHeight="60"/>
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>-->
+         
+        
+        
+    </StackLayout>
+</ContentPage>
