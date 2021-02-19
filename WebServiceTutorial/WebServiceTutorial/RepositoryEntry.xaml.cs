@@ -10,62 +10,47 @@ using Xamarin.Forms.Xaml;
 
 namespace WebServiceTutorial
 {
-    [QueryProperty(nameof(ItemId), nameof(ItemId))]
+   // [QueryProperty(nameof(ItemId), nameof(ItemId))]
     public partial class RepositoryEntry : ContentPage
     {
-        public string ItemId
-        {
-            set
-            {
-                LoadRepository(value);
-            }
-        }
+
+        RestService _restService;
+        
 
         public RepositoryEntry()
         {
             InitializeComponent();
 
-            // Set the BindingContext of the page to a new Note.
-            BindingContext = new Repository();
+            //Set the BindingContext of the page to a new Note.
+           BindingContext = new Repository();
+            _restService = new RestService();
         }
 
-        void LoadRepository(string howTo)
-        {
-            try
-            {
-                // Retrieve the note and set it as the BindingContext of the page.
-                Repository repository = new Repository
-                {
-                    HowTo = howTo,
-                    //HowTo = File.ReadAllText(id),
-                    //Date = File.GetCreationTime(id)
-                };
-                BindingContext = repository;
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Failed to load note.");
-            }
-        }
-
-        //async void OnSaveButtonClicked(object sender, EventArgs e)
+        //void LoadRepository(string howTo)
         //{
-        //    var repository = (Repository)BindingContext;
-
-        //    if (string.IsNullOrEmpty(repository.Id))
+        //    try
         //    {
-        //        // Save the file.
-        //        var filename = Path.Combine(App.FolderPath, $"{Path.GetRandomFileName()}.notes.txt");
-        //        File.WriteAllText(filename, note.Text);
+        //        // Retrieve the note and set it as the BindingContext of the page.
+        //        Repository repository = new Repository
+        //        {
+        //            HowTo = howTo,
+        //            //HowTo = File.ReadAllText(id),
+        //            //Date = File.GetCreationTime(id)
+        //        };
+        //        BindingContext = repository;
         //    }
-        //    else
+        //    catch (Exception)
         //    {
-        //        // Update the file.
-        //        File.WriteAllText(note.Filename, note.Text);
+        //        Console.WriteLine("Failed to load note.");
         //    }
-
-        //    // Navigate backwards
-        //    await Shell.Current.GoToAsync("..");
         //}
+
+        async void OnSaveButtonClicked(object sender, EventArgs e)
+        {
+            var repository = (Repository)BindingContext;
+            await _restService.SaveRepository(repository);
+            //await Navigation.GoToAsynch(new MainPage);
+            //await Shell.Current.GoToAsync("MainPage");
+        }
     }
 }

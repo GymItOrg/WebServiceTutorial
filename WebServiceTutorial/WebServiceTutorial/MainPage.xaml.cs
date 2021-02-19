@@ -23,26 +23,29 @@ namespace WebServiceTutorial
             MyListView.ItemsSource = repositories;
         }
 
-
-        async void OnListViewItemSelected(object sender, SelectionChangedEventArgs e)
-        {
-            if (e.CurrentSelection != null)
-            {
-                // Navigate to the NoteEntryPage, passing the filename as a query parameter.
-                Repository repository = (Repository)e.CurrentSelection.FirstOrDefault();
-                await Shell.Current.GoToAsync($"{nameof(RepositoryEntry)}?{nameof(RepositoryEntry.ItemId)}={repository.Id}");
-            }
-        }
-
-        //async void OnListViewItemSelected(object sender, SelectedItemChangedEventArgs e)
+        //"navigation" tutorial
+        //async void OnListViewItemSelected(object sender, SelectionChangedEventArgs e)
         //{
-        //    if (e.SelectedItem != null)
+        //    if (e.CurrentSelection != null)
         //    {
-        //        await Navigation.PushAsync(new NoteEntryPage
-        //        {
-        //            BindingContext = e.SelectedItem as Note
-        //        });
+        //        // Navigate to the NoteEntryPage, passing the filename as a query parameter.
+        //        Repository repository = (Repository)e.CurrentSelection.FirstOrDefault();
+        //        await Shell.Current.GoToAsync($"{nameof(RepositoryEntry)}?{nameof(RepositoryEntry.ItemId)}={repository.Id}");
         //    }
         //}
+
+
+
+        //walkthrough read version tutorial 
+        async void OnListViewItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            if (e.SelectedItem != null)
+            {
+                await Navigation.PushAsync(new RepositoryEntry
+                {
+                    BindingContext = e.SelectedItem as Repository
+                });
+            }
+        }
     }
 }

@@ -23,12 +23,12 @@
     <ContentPage.Content>
         <StackLayout Margin="20">
             <Editor Placeholder="Enter your note"
-                Text="{Binding Id}"
+                Text="{Binding HowTo}"
                 HeightRequest="100" />
             <!-- Layout children in two columns -->
             <Grid ColumnDefinitions="*,*">
-                <!--<Button Text="Save"
-                    Clicked="OnSaveButtonClicked" />-->
+                <Button Text="Save"
+                    Clicked="OnSaveButtonClicked" />
              
             </Grid>
         </StackLayout>
