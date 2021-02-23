@@ -22,7 +22,7 @@ namespace WebServiceTutorial
             InitializeComponent();
 
             //Set the BindingContext of the page to a new Note.
-           BindingContext = new Repository();
+           //BindingContext = new Repository();
             _restService = new RestService();
         }
 

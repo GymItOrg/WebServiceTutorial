@@ -13,6 +13,7 @@ namespace WebServiceTutorial
         HttpClient _client;
 
         public List<Repository> repositories { get; private set; }
+        public Repository repository { get; private set; }
 
         public RestService()
         {
@@ -40,22 +41,23 @@ namespace WebServiceTutorial
             return repositories;
         }
 
-        public async Task<Repository> SaveRepository(Repository repository)
+        public async Task SaveRepository(Repository repository)
         {
-            Uri uri = new Uri(string.Format(Constants.GitHubReposEndpoint, string.Empty));
+            string RepId = "/" + repository.Id.ToString();
+            Uri uri = new Uri(string.Format(Constants.GitHubReposEndpoint, string.Empty) + RepId);
             string json = JsonConvert.SerializeObject(repository);
             StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
 
+
             HttpResponseMessage response = null;
-            response = await _client.PostAsync(uri, content);
+            response = await _client.PutAsync(uri, content);
 
             if (response.IsSuccessStatusCode)
             {
                 Debug.WriteLine(@"\tTodoItem successfully saved.");
             }
 
-            return JsonConvert.DeserializeObject<Repository>(
-               await response.Content.ReadAsStringAsync());
+
         }
 
 
