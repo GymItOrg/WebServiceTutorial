@@ -2,6 +2,6 @@
 {
     public static class Constants
     {
-        public const string GitHubReposEndpoint = "http://localhost:5000/api/commands";
+        public const string GitHubReposEndpoint = "https://cmdapi20210223095538.azurewebsites.net/api/commands";
     }
 }
