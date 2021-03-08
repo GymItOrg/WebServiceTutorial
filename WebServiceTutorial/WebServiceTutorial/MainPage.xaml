@@ -23,7 +23,7 @@
                             <MenuItem                     
                     Text="Delete" IsDestructive="True" />
                         </TextCell.ContextActions>
-                    </TextCell>
+                    </TextCell>                  
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

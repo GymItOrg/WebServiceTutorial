@@ -41,6 +41,8 @@ namespace WebServiceTutorial
             return repositories;
         }
 
+
+        //working method to change data
         public async Task SaveRepository(Repository repository)
         {
             string RepId = "/" + repository.Id.ToString();
@@ -59,6 +61,25 @@ namespace WebServiceTutorial
 
 
         }
+
+        //public async Task SaveRepository(Repository repository)
+        //{
+        //    //string RepId = "/" + repository.Id.ToString();
+        //    Uri uri = new Uri(string.Format(Constants.GitHubReposEndpoint, string.Empty));
+        //    string json = JsonConvert.SerializeObject(repository);
+        //    StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+
+
+        //    HttpResponseMessage response = null;
+        //    response = await _client.PostAsync(uri, content);
+
+        //    if (response.IsSuccessStatusCode)
+        //    {
+        //        Debug.WriteLine(@"\tTodoItem successfully saved.");
+        //    }
+
+
+        //}
 
 
         //not working yet 
