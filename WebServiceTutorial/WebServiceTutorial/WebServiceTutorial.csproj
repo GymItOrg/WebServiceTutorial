@@ -15,6 +15,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="ItemAddPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="RepositoryEntry.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

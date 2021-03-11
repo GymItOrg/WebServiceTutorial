@@ -49,6 +49,7 @@ namespace WebServiceTutorial
         {
             var repository = (Repository)BindingContext;
             await _restService.SaveRepository(repository);
+            await Navigation.PopAsync();
             //await Navigation.GoToAsynch(new MainPage);
             //await Shell.Current.GoToAsync("MainPage");
         }

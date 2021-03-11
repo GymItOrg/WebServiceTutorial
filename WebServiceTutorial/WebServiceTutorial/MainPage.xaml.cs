@@ -17,27 +17,24 @@ namespace WebServiceTutorial
 
         async void OnButtonClicked(object sender, EventArgs e)
         {
-            //List<Repository> repositories = await _restService.GetRepositoriesAsync(Constants.GitHubReposEndpoint);
-            //string content = await _restService.GetRepositoriesAsync();
+            
             List<Repository> repositories = await _restService.GetRepositoriesAsync();
             MyListView.ItemsSource = repositories;
         }
 
-        //"navigation" tutorial
-        //async void OnListViewItemSelected(object sender, SelectionChangedEventArgs e)
-        //{
-        //    if (e.CurrentSelection != null)
-        //    {
-        //        // Navigate to the NoteEntryPage, passing the filename as a query parameter.
-        //        Repository repository = (Repository)e.CurrentSelection.FirstOrDefault();
-        //        await Shell.Current.GoToAsync($"{nameof(RepositoryEntry)}?{nameof(RepositoryEntry.ItemId)}={repository.Id}");
-        //    }
-        //}
+
+        //step 2:add code to the click event
+        async void OnAddClicked(object sender, EventArgs e)
+        {
+            //step 3: Use the navigation class and PushAsynch to go to a different page and reference it in the method
+            //ste[ 4: create a new xaml item call "ItemAddPage" (this is already been done) 
+            await Navigation.PushAsync(new ItemAddPage());
+        }
 
 
 
-        //walkthrough read version tutorial 
-        async void OnListViewItemSelected(object sender, SelectedItemChangedEventArgs e)
+    //walkthrough read version tutorial 
+    async void OnListViewItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             if (e.SelectedItem != null)
             {

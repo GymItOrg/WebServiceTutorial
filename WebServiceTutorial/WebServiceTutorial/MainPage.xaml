@@ -5,14 +5,11 @@
     <StackLayout Margin="20,35,20,20">
         <Button Text="Get Repository Data"
                 Clicked="OnButtonClicked" />
-
-        <!--<ListView x:Name="MyListView">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <TextCell Text="{Binding HowTo}" />
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>-->
+        
+        <!--Step 1: Add a XAML element that is connected to a click event-->
+        <Button Text="Add new item"
+                Clicked="OnAddClicked" />
+       
 
         <ListView x:Name="MyListView"
                   ItemSelected="OnListViewItemSelected">

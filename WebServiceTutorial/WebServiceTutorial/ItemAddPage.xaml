@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"            
+             x:Class="WebServiceTutorial.ItemAddPage">
+    <ContentPage.Content>
+        <StackLayout Margin="20">
+            <!--add an EDITOR element to hold text. modify the placeholder text-->
+            <!--bind the desired data contents to the Editor element-->
+            <Editor Placeholder="Enter your note"                  
+                Text="{Binding HowTo}"
+                HeightRequest="100" />
+                        <Grid ColumnDefinitions="*,*">
+                <!--add an BUTTON element to hold text. modify the placeholder text-->
+                <!--use a Clicked method to the button -->
+                <!--navigate to ItemAddPage.xaml.cs to program the OnAddButtonClicked method-->
+                <Button Text="Add"
+                    Clicked="OnAddButtonClicked" />
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
