@@ -56,8 +56,6 @@ namespace WebServiceTutorial
 
                 Debug.WriteLine(@"\tTodoItem successfully saved.");
             }
-
-
         }
 
 
@@ -82,7 +80,18 @@ namespace WebServiceTutorial
             }
         }
 
+        public async Task DeleteRepository(Repository repository)
+        {
+            string RepId = "/" + repository.Id.ToString();
+            Uri uri = new Uri(string.Format(Constants.GitHubReposEndpoint, string.Empty) + RepId);
+            HttpResponseMessage response = null;
+            response = await _client.DeleteAsync(uri);
+            if (response.IsSuccessStatusCode)
+            {
 
+                Debug.WriteLine(@"\tTodoItem successfully saved.");
+            }
+        }
 
 
 

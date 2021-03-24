@@ -53,5 +53,14 @@ namespace WebServiceTutorial
             //await Navigation.GoToAsynch(new MainPage);
             //await Shell.Current.GoToAsync("MainPage");
         }
+
+        async void OnDeleteButtonClicked(object sender, EventArgs e)
+        {
+            var repository = (Repository)BindingContext;
+            await _restService.DeleteRepository(repository);
+            await Navigation.PopAsync();
+            //await Navigation.GoToAsynch(new MainPage);
+            //await Shell.Current.GoToAsync("MainPage");
+        }
     }
 }
