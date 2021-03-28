@@ -5,7 +5,9 @@
     <StackLayout Margin="20,35,20,20">
         <Button Text="Get Repository Data"
                 Clicked="OnButtonClicked" />
-        
+        <Button Text="View Gyms"
+                Clicked="OnGymViewClicked" />
+
         <!--Step 1: Add a XAML element that is connected to a click event-->
         <Button Text="Add new item"
                 Clicked="OnAddClicked" />

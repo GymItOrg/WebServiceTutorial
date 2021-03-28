@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using WebServiceTutorial.Views;
 using Xamarin.Forms;
 
 namespace WebServiceTutorial
@@ -31,10 +32,15 @@ namespace WebServiceTutorial
             await Navigation.PushAsync(new ItemAddPage());
         }
 
+        async void OnGymViewClicked(object sender, EventArgs e)
+        {            
+            await Navigation.PushAsync(new GymsPage());
+        }
 
 
-    //walkthrough read version tutorial 
-    async void OnListViewItemSelected(object sender, SelectedItemChangedEventArgs e)
+
+        //walkthrough read version tutorial 
+        async void OnListViewItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             if (e.SelectedItem != null)
             {
