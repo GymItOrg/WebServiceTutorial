@@ -115,6 +115,22 @@ namespace WebServiceTutorial
             }
         }
 
+        public async Task AddRepository(Repository repository)
+        {
+                   
+            Uri uri = new Uri(string.Format(Constants.GitHubReposEndpoint, string.Empty) + "/commands");
+            string json = JsonConvert.SerializeObject(repository);
+
+            StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+            HttpResponseMessage response = null;
+
+            response = await _client.PostAsync(uri, content);
+            if (response.IsSuccessStatusCode)
+            {
+                Debug.WriteLine(@"\tTodoItem successfully saved.");
+            }
+        }
+
 
 
     }
