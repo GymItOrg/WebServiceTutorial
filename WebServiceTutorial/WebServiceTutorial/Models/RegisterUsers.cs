@@ -4,7 +4,7 @@ using System.Text;
 
 namespace WebServiceTutorial.Models
 {
-    class RegisterUsers
+    public class RegisterUsers
     {
         //[Required(ErrorMessage = "User name is required")]
         public string userName { get; set; }

@@ -1,4 +1,5 @@
 ﻿using System;
+using WebServiceTutorial.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -11,7 +12,8 @@ namespace WebServiceTutorial
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new MainPage());
+            //MainPage = new NavigationPage(new MainPage());
+            MainPage = new NavigationPage(new LoginRegister());
         }
 
         protected override void OnStart()

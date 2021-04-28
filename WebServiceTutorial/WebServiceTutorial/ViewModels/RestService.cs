@@ -17,6 +17,9 @@ namespace WebServiceTutorial
         public Repository repository { get; private set; }
         public List<Gyms> gyms { get; private set; }
         public Gyms gym { get; private set; }
+        public RegisterUsers newUser { get; private set; }
+        public  LoginUsers existingUser { get; private set; }
+
 
         public RestService()
         {
@@ -115,19 +118,39 @@ namespace WebServiceTutorial
             }
         }
 
-        public async Task AddRepository(Repository repository)
+        public async Task AddNewUser(RegisterUsers newUser)
         {
                    
-            Uri uri = new Uri(string.Format(Constants.GitHubReposEndpoint, string.Empty) + "/commands");
-            string json = JsonConvert.SerializeObject(repository);
+            Uri uri = new Uri(string.Format(Constants.GitHubReposEndpoint, string.Empty) + "/Authentication/register");
+            string json = JsonConvert.SerializeObject(newUser);
 
             StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
             HttpResponseMessage response = null;
+            //Debug.WriteLine(content.ToString());
 
             response = await _client.PostAsync(uri, content);
             if (response.IsSuccessStatusCode)
             {
-                Debug.WriteLine(@"\tTodoItem successfully saved.");
+
+                Debug.WriteLine(@"\user successfully added.");
+            }
+        }
+
+        public async Task LoginExistingUser(LoginUsers existingUser)
+        {
+
+            Uri uri = new Uri(string.Format(Constants.GitHubReposEndpoint, string.Empty) + "/Authentication/login");
+            string json = JsonConvert.SerializeObject(existingUser);
+
+            StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+            HttpResponseMessage response = null;
+            //Debug.WriteLine(content.ToString());
+
+            response = await _client.PostAsync(uri, content);
+            if (response.IsSuccessStatusCode)
+            {
+
+                Debug.WriteLine(@"\login successful.");
             }
         }
 

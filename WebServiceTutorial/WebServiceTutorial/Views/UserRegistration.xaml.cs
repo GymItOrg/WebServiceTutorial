@@ -24,8 +24,8 @@ namespace WebServiceTutorial.Views
         async void OnRegisterButtonClicked(object sender, EventArgs e)
         {
             var newUser = (RegisterUsers)BindingContext;
-            await _restService.SaveRepository(newUser);
-            await Navigation.PopAsync();
+            await _restService.AddNewUser(newUser);
+            await Navigation.PushAsync(new LoginRegister());
         }
     }
 }
