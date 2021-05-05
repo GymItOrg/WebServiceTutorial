@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WebServiceTutorial.Helpers;
 using WebServiceTutorial.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -25,6 +26,10 @@ namespace WebServiceTutorial.Views
         {
             var newUser = (RegisterUsers)BindingContext;
             await _restService.AddNewUser(newUser);
+
+            Settings.Username = newUser.userName;
+            Settings.Password = newUser.Password;
+
             await Navigation.PushAsync(new LoginRegister());
         }
     }

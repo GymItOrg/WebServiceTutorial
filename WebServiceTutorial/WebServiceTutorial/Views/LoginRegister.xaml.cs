@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WebServiceTutorial.Helpers;
 using WebServiceTutorial.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -24,7 +26,10 @@ namespace WebServiceTutorial.Views
         async void LoginUser(object sender, EventArgs e)
         {
             var existingUser = (LoginUsers)BindingContext;
-            await _restService.LoginExistingUser(existingUser);
+            Settings.AccessToken = await _restService.LoginExistingUser(existingUser);
+
+            Debug.WriteLine(Settings.AccessToken);
+
             await Navigation.PushAsync(new MainPage());
         }
     }

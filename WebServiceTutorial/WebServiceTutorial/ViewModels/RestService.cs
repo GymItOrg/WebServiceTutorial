@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using WebServiceTutorial.Models;
 
 namespace WebServiceTutorial
@@ -19,6 +21,7 @@ namespace WebServiceTutorial
         public Gyms gym { get; private set; }
         public RegisterUsers newUser { get; private set; }
         public  LoginUsers existingUser { get; private set; }
+        public JWTToken accessToken { get; private set; }
 
 
         public RestService()
@@ -46,12 +49,13 @@ namespace WebServiceTutorial
             return repositories;
         }
 
-        public async Task<List<Gyms>> GetGymsAsync()
+        public async Task<List<Gyms>> GetGymsAsync(string accessToken)
         {
             gyms = new List<Gyms>();
             Uri uri = new Uri(string.Format(Constants.GitHubReposEndpoint, string.Empty)+ "/Places");
             try
             {
+                _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
                 HttpResponseMessage response = await _client.GetAsync(uri);
                 if (response.IsSuccessStatusCode)
                 {
@@ -136,7 +140,7 @@ namespace WebServiceTutorial
             }
         }
 
-        public async Task LoginExistingUser(LoginUsers existingUser)
+        public async Task<string> LoginExistingUser(LoginUsers existingUser)
         {
 
             Uri uri = new Uri(string.Format(Constants.GitHubReposEndpoint, string.Empty) + "/Authentication/login");
@@ -147,11 +151,15 @@ namespace WebServiceTutorial
             //Debug.WriteLine(content.ToString());
 
             response = await _client.PostAsync(uri, content);
-            if (response.IsSuccessStatusCode)
-            {
+            string JWTtoken = await response.Content.ReadAsStringAsync();
 
-                Debug.WriteLine(@"\login successful.");
-            }
+            JWTToken accessToken  = JsonConvert.DeserializeObject<JWTToken>(JWTtoken);
+
+            string tokenContent = accessToken.token;
+
+            //Debug.WriteLine(tokenContent);
+
+            return tokenContent;
         }
 
 

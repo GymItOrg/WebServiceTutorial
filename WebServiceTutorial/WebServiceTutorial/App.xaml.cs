@@ -13,7 +13,7 @@ namespace WebServiceTutorial
             InitializeComponent();
 
             //MainPage = new NavigationPage(new MainPage());
-            MainPage = new NavigationPage(new LoginRegister());
+            MainPage = new NavigationPage(new WelcomePage());
         }
 
         protected override void OnStart()
