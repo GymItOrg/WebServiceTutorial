@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WebServiceTutorial.Views.UserRegistrationPage1">
+    <ContentPage.Content>
+        <Grid Margin="16">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <StackLayout Grid.Row="0">
+                <Label Text="Tell us a little bit about yourself" />
+                <Label Text="How old are you?" />
+                <Entry Text="{Binding Age}"
+                       Placeholder="Age" />
+                <!--<Label Text="{Binding Source={x:Reference genderPicker}, Path=SelectedItem}" />
+                <Picker x:Name="genderPicker"
+                        Title="Select a gender">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Male</x:String>
+                            <x:String>Female</x:String>                            
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>-->
+                <Label Text="Gender?" />
+                <Picker x:Name="genderPicker" SelectedIndex="{Binding Gender}">
+                    <Picker.Items>
+                        <x:String>Male</x:String>
+                        <x:String>Female</x:String>                        
+                    </Picker.Items>
+                </Picker>
+                <Label Text="body type?" />
+                <Picker x:Name="bodyTypePicker" SelectedIndex="{Binding bodyType}">
+                    <Picker.Items>
+                        <x:String>Fat</x:String>
+                        <x:String>String</x:String>
+                        <x:String>Skinny</x:String>
+                    </Picker.Items>
+                </Picker>
+                <Label Text="Height?" />
+                <Entry Text="{Binding height}"
+                       Placeholder="Height" />
+                <Label Text="Weight?" />
+                <Entry Text="{Binding weight}"
+                       Placeholder="Weight" />
+                <Label Text="Do you need free weights?" />
+                <Picker x:Name="needFreeWeightsPicker" SelectedIndex="{Binding needFreeWeights}">
+                    <Picker.Items>
+                        <x:String>true</x:String>
+                        <x:String>false</x:String>
+                    </Picker.Items>
+                </Picker>                
+                <!--<Label Text="Invalid credentials entered" 
+                       IsVisible="{Binding AreCredentialsInvalid}" 
+                       TextColor="Red" />-->
+            </StackLayout>
+            <Button Grid.Row="2" Text="Next"  Clicked="OnNextButtonClicked" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

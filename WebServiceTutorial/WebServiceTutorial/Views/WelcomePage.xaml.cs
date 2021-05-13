@@ -22,7 +22,7 @@ namespace WebServiceTutorial.Views
         }
         async void RegisterUser(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new UserRegistration());
+            await Navigation.PushAsync(new UserRegistrationPage1());
         }
     }
 }
